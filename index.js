@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
@@ -10,10 +11,10 @@ const urlRouter = require('./router/url')
 const staticRouter = require('./router/staticRoute')
 
 const app = express()
-const port = 8001
+const port = process.env.PORT
 
 // DB connection
-connectionDB('mongodb://127.0.0.1:27017/URL-shortner')
+connectionDB(process.env.DB_URL)
 
 // middleware
 app.use(express.json())
